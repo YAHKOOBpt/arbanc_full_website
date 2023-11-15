@@ -1,0 +1,120 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block content %}
+
+<header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">                        
+
+                    </div>
+                </div>
+            </header>
+   <!-- reality section start  -->
+            
+                
+            <section class="explore-section section-padding" id="section_2">
+                <div class="container-fluid">
+                    <div class="container">
+                        <div class="row pb-3">
+    
+                            <div class="col-12 text-center">
+                                <h2 class="mb-4">REALTY</h1>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mb-2">
+                            <div class="tab-content" id="myTabContent">
+                                <!-- <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0"> -->
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                                            {% for l in land %}
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="{% url 'User_land' %}">
+                                            
+                                                    <div class="d-flex">
+                                                        <div style="overflow: hidden; height: 100px;">
+                                                            <h5 class="mb-2">Land Acquisition</h5>
+
+                                                            <p class="mb-0">{{l.description}}</p>
+                                                        </div>
+
+                                                        <!-- <span class="badge bg-design rounded-pill ms-auto">1</span> -->
+                                                    </div>
+
+                                                    <img src="{{l.imageURL}}" class="custom-block-image img-fluid rounded-3" alt="">
+                                                </a>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                                            {% for p in plot %}
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="{% url 'User_plot' %}">
+                                                    <div class="d-flex">
+                                                        <div style="overflow: hidden; height: 100px;">
+                                                            <h5 class="mb-2">Plot Developments</h5>
+
+                                                                <p class="mb-0">{{p.description}}</p>
+                                                        </div>
+
+                                                        <!-- <span class="badge bg-design rounded-pill ms-auto">2</span> -->
+                                                    </div>
+
+                                                    <img src="{{p.imageURL}}" class="custom-block-image img-fluid rounded-3" alt="">
+                                                </a>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                                            {% for r in residential %}
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="{% url 'User_residential' %}">
+                                                    <div class="d-flex">
+                                                        <div style="overflow: hidden; height: 100px;">
+                                                            <h5 class="mb-2">Residential villas</h5>
+
+                                                                <p class="mb-0">{{r.description}}</p>
+                                                        </div>
+
+                                                        <!-- <span class="badge bg-design rounded-pill ms-auto">3</span> -->
+                                                    </div>
+
+                                                    <img src="{{r.imageURL}}" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
+                                            {% for r in Commercial_vila %}
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="{% url 'User_commercial' %}">
+                                                    <div class="d-flex">
+                                                        <div style="overflow: hidden; height: 100px;">
+                                                            <h5 class="mb-2">Commercial Office </h5>
+
+                                                            <p class="mb-0">{{r.description}}</p>
+                                                        </div>
+
+                                                        <!-- <span class="badge bg-design rounded-pill ms-auto">1</span> -->
+                                                    </div>
+
+                                                    <img src="{{r.imageURL}}" class="custom-block-image img-fluid rounded-3" alt="">
+                                                </a>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>   
+                    </div>
+                </div>
+            </section>
+
+<!-- reality section ends  -->
+
+{% endblock %}

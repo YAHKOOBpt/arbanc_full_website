@@ -1,0 +1,64 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block content %}
+            
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+
+                        <div class="col-lg-5 col-12 mb-5">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                                    
+
+                                    <li class="breadcrumb-item active" aria-current="page">Reality</li>
+                                </ol>
+                            </nav>
+
+                            <h2 class="text-white">Residential Villa</h2>
+
+                            
+                        </div>
+                        {% for r in Residential %}
+
+                        <div class="col-lg-5 col-12">
+                            <div class="topics-detail-block bg-white shadow-lg">
+                                <img src="{{r.imageURL}}" class="topics-detail-block-image img-fluid">
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </header>
+
+
+            <section class="topics-detail-section section-padding" id="topics-detail">
+                <div class="container">
+                {% for r in Residential %}
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 m-auto">
+                            <h3 class="mb-4">Residential Villas</h3>
+
+                            <p>{{r.description}}</p>
+
+                            <div class="row my-4">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <img src="{{r.imageURL_1}}" class="topics-detail-block-image img-fluid">
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-12 mt-4 mt-lg-0 mt-md-0">
+                                    <img src="{{r.imageURL_2}}" class="topics-detail-block-image img-fluid">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                {% endfor %}
+                </div>
+            </section>
+         
+{% endblock %}

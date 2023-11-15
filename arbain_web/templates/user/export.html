@@ -1,0 +1,91 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block content %}
+            
+
+            <header class="site-header d-flex flex-column justify-content-center align-items-center">
+                <div class="container">
+                    <div class="row justify-content-center align-items-center">
+
+                        <div class="col-lg-5 col-12 mb-5">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                    <!-- <li class="breadcrumb-item"><a href="index.html">Reality</a></li> -->
+
+                                    <li class="breadcrumb-item active" aria-current="page">Export</li>
+                                </ol>
+                            </nav>
+
+                            <h2 class="text-white">Export</h2>
+
+                        </div>
+                        {% for b in bg_expor %}
+
+                        <div class="col-lg-5 col-12">
+                            <div class="topics-detail-block bg-white shadow-lg">
+                                <img src="{{b.imageURL}}" class="topics-detail-block-image img-fluid">
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </header>
+
+
+            <section class="topics-detail-section section-padding" id="topics-detail">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 m-auto">
+                            {% for f in export_food %}
+                            <h3 class="mb-4">Foods</h3>
+
+                            <p>{{f.description}}</p>
+
+                            <div class="row">
+                                <div class="col">
+                                    <img src="{{f.imageURL}}" class="topics-detail-block-image img-fluid w-50 h-75 pt-2">
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            {% for s in export_spices %}
+
+                            <h3 class="mb-4">Spices</h3>
+
+                            <p>{{s.description}}</p>
+                            
+                            <div class="row">
+                                <div class="col">
+                                    <img src="{{s.imageURL}}" class="topics-detail-block-image img-fluid w-50 h-75 pt-2">
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            {% for c in export_cosmetic %}
+                            <h3 class="mb-4">Cosmetics</h3>
+
+                            <p>{{c.description}} </p>
+
+                            <div class="row">
+                                <div class="col">
+                                    <img src="{{c.imageURL}}" class="topics-detail-block-image img-fluid w-50 h-75 pt-2">
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            
+
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+           
+
+{% endblock %}
+           
+	
