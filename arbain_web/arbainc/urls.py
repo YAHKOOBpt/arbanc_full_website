@@ -6,10 +6,6 @@ from.import views
 urlpatterns = [
     path('',views.index,name="home"),
 
-# search bar url 
-    path('',views.search_bar,name="search_bar"),
-
-
 # investment urls section start 
 
     path('User_startup',views.User_startup,name="User_startup"),
@@ -17,6 +13,8 @@ urlpatterns = [
     path('User_Infranstructor',views.User_Infranstructor,name="User_Infranstructor"),
 
     path('User_Construction',views.User_Construction,name="User_Construction"),
+
+    path('User_mining',views.User_mining,name="User_mining"),
 
 # investment user urls section ends
 
@@ -143,6 +141,10 @@ urlpatterns = [
     path('adm_infrastructure',views.adm_infrastructure,name="adm_infrastructure"),
     path('edit_infrastructure/<int:pk>/',views.edit_infrastructure,name="edit_infrastructure"),
     path('delete_infrastructure/<int:pk>/',views.delete_infrastructure,name="delete_infrastructure"),
+
+    path('adm_mining',views.adm_mining,name="adm_mining"),
+    path('edit_mining/<int:pk>/',views.edit_mining,name="edit_mining"),
+    path('delete_mining/<int:pk>/',views.delete_mining,name="delete_mining"),
 
 # end manage investment
 

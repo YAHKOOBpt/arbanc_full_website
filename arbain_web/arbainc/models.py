@@ -350,7 +350,39 @@ class Infrastructure(models.Model):
         except:
             url = ''
         return  url
+
+class Mining(models.Model):
+    description = models.TextField()
+    image = models.ImageField(upload_to='Mining/', null=True, blank=True)
+    image_1 = models.ImageField(upload_to='Mining/', null=True, blank=True)
+    image_2 = models.ImageField(upload_to='Mining/', null=True, blank=True)
+ 
     
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return  url
+    
+    @property
+    def imageURL_1(self):
+        try:
+            url = self.image_1.url
+        except:
+            url = ''
+        return  url
+    
+    @property
+    def imageURL_2(self):
+        try:
+            url = self.image_2.url
+        except:
+            url = ''
+        return  url
+
+
 class Client(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()

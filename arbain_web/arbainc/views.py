@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import Land_acq,Plot_dev,Residential_villa,Commercial,Food,Spices,Cosmetics,Bg_export,Health_care,Bg_health,Start_constr,Start_finance,img_consulting,StratUp,Construction,Infrastructure,Client,Home_heading
+from .models import Land_acq,Plot_dev,Residential_villa,Commercial,Food,Spices,Cosmetics,Bg_export,Health_care,Bg_health,Start_constr,Start_finance,img_consulting,StratUp,Construction,Infrastructure,Client,Home_heading,Mining
 import os
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -33,6 +33,8 @@ def index(request):
     bg_expor=Bg_export.objects.all()
     bg_heal=Bg_health.objects.all()
 
+    
+
 
 
     context ={
@@ -57,6 +59,7 @@ def index(request):
         'plot':plot,
         'residential':residential,
         'Commercial_vila':Commercial_vila,
+
         'bg_expor':bg_expor,
         'bg_heal':bg_heal,
 
@@ -83,17 +86,6 @@ def User_consult(request):
 
 # user consulting section ends
 
-
-# search bar section start 
-
-def search_bar(request):
-    if request.method == 'GET':
-        search =request.GET.get('keyword')
-        land= Land_acq.objects.all().filter(title=search)
-        context ={'land':land}
-    return render(request,'user/search.html',context)
-
-# search bar section ends 
 
 # user investment section start
 
@@ -124,6 +116,13 @@ def User_Investment(request):
         'invest':invest
     }
     return render(request,'user/investment.html',context)
+
+def User_mining(request):
+    mine =Mining.objects.all()
+    context={
+        'mine':mine
+    }
+    return render(request,'user/mining.html',context)
 
 # user investment section end 
 
@@ -942,6 +941,55 @@ def delete_infrastructure(request,pk):
     del_infrastruc = Infrastructure.objects.filter(id=pk)
     del_infrastruc.delete()
     return redirect('adm_infrastructure')
+
+
+def adm_mining(request):
+    mine=Mining.objects.all()
+    if request.method == "POST":
+        mine = Mining()       
+        mine.description = request.POST.get('description')
+        if len(request.FILES) != 0:
+            mine.image = request.FILES['img']
+            mine.image_1 = request.FILES['img_1']
+            mine.image_2 = request.FILES['img_2']
+        mine.save()
+        messages.success(request,"successfully complited")
+        return redirect('adm_mining') 
+    context={
+        'mine':mine
+        } 
+    return render(request,'admi/mining.html',context)
+
+def edit_mining(request,pk):
+    edt_mine=Mining.objects.get(id=pk)
+    if request.method == "POST":
+        if 'img' in request.FILES:
+            if len(edt_mine.image) > 0:
+                os.remove(edt_mine.image.path)
+            edt_mine.image = request.FILES['img']
+
+        if 'img_1' in request.FILES:
+            if len(edt_mine.image_1) > 0:
+                os.remove(edt_mine.image_1.path)
+            edt_mine.image_1 = request.FILES['img_1']
+
+        if 'img_2' in request.FILES:
+            if len(edt_mine.image_2) > 0:
+                os.remove(edt_mine.image_2.path)
+            edt_mine.image_2 = request.FILES['img_2']    
+        edt_mine.description=request.POST.get('description')
+        edt_mine.save()
+        messages.success(request,"Update successfully")
+        return redirect('adm_mining')
+    context={
+        'edt_mine':edt_mine
+        }
+    return render(request,'admi/edit_mining.html',context)
+
+def delete_mining(request,pk):
+    del_mine = Mining.objects.filter(id=pk)
+    del_mine.delete()
+    return redirect('adm_mining')
 
 # end manage investment
 
