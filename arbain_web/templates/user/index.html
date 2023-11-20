@@ -22,16 +22,16 @@
 
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
                         
-        <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
-        <link href="{% static '/css/bootstrap-icons.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
 
-        <link href="{% static '/css/templatemo-topic-listing.css' %}" rel="stylesheet">  
+        <link href="{% static 'css/templatemo-topic-listing.css' %}" rel="stylesheet">  
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-…(hash)" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <style>
             .colr{
-                color: yellow;
+                color: #f4b805;
                 font-weight: 1000;
                 font-size: 15px;
             }
@@ -118,22 +118,12 @@ https://templatemo.com/tm-590-topic-listing
 
                         <div class="col-lg-8 col-12 mx-auto">
                         
-                            <h2 class="text-white text-center">{{h.title}}</h2>
+                            <h2 class="text-center">{{h.title}}</h2>
 
                             <h6 class="text-center">{{h.title_1}}</h6>
                     {% endfor %}
 
-                            <!-- <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search" action="">
-                                <div class="input-group input-group-lg">
-                                    <span class="input-group-text bi-search" id="basic-addon1">
-                                        
-                                    </span>
-
-                                    <input name="keyword" type="search" class="form-control" id="keyword" placeholder=" Construction, Finance ..." aria-label="Search">
-
-                                    <button type="submit" class="form-control">Search</button>
-                                </div>
-                            </form> -->
+                            
                         </div>
 
                     </div>
